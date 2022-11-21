@@ -12,5 +12,11 @@ class Solution {
         } else {
             return hashSet.size();
         }
+                //스트림으로 풀기
+//        int answer = nums.length / 2;
+//
+//        int typeCnt = (int) Arrays.stream(nums).distinct().count();
+//
+//        return typeCnt < answer ? typeCnt : answer;
     }
 }
