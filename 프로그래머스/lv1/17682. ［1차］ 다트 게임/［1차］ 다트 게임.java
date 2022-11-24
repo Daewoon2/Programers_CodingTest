@@ -30,9 +30,9 @@ class Solution {
                 int num = stack.pop();
                 stack.push(num*num*num);
             }else {
-                int num = Integer.parseInt(String.valueOf(dartResult.charAt(i)));
+                char num = dartResult.charAt(i);
                 char num2 = dartResult.charAt(i+1);
-                if(num==1 && num2=='0') {
+                if(num=='1' && num2=='0') {
                     stack.push(10);
                     i++;
                 }else {
