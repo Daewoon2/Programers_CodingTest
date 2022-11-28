@@ -13,7 +13,8 @@ class Solution {
                     lost[i] = -1;
                     reserve[j] = -1;
                     answer++;
-                    break;
+                    
+                    
                 }
             }
         }
