@@ -29,7 +29,7 @@ class Solution {
             }
         }
 
-        answer += n - lost.length;
+        answer = answer + n - lost.length;
         return answer;
     }
 }
