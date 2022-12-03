@@ -13,13 +13,13 @@ class Solution {
                 right = num;
             } else {
                 if (num == 0) num = 11;
-                int leftDist = Math.abs(num - left) / 3 + Math.abs(num - left) % 3;
-                int rightDist = Math.abs(num - right) / 3 + Math.abs(num - right) % 3;
+                int leftLoca = Math.abs(num - left) / 3 + Math.abs(num - left) % 3;
+                int rightLoca = Math.abs(num - right) / 3 + Math.abs(num - right) % 3;
 
-                if (leftDist < rightDist) {
+                if (leftLoca < rightLoca) {
                     answer += "L";
                     left = num;
-                } else if (leftDist > rightDist) {
+                } else if (leftLoca > rightLoca) {
                     answer += "R";
                     right = num;
                 } else {
