@@ -1,34 +1,20 @@
+import java.util.*;
+
 class Solution {
     public String solution(String polynomial) {
-        StringBuilder sb = new StringBuilder();
+        int xCnt = 0;
+        int num = 0;
 
-        String[] c=polynomial.split(" ");
-
-        int cnt = 0;
-        int cnn = 0;
-        for (String a:c) {
-
-            if(a.equals("x")){
-                cnt++;
-            }else if(a.contains("x")){
-                cnt+=Integer.parseInt(a.substring(0,a.length()-1));
-            }else if(!a.contains("+")){
-                cnn+=Integer.parseInt(a);
+        for (String s : polynomial.split(" ")) {
+            if (s.contains("x")) {
+                xCnt += s.equals("x") ? 1 : Integer.parseInt(s.replaceAll("x", ""));
+            }
+            else if (!s.contains("+")) {
+                num += Integer.parseInt(s);
             }
         }
-        
-        if(cnt==1){
-            sb.append('x');
-        }else if(cnt >1){
-            sb.append(cnt).append('x');
-        }
-        if(cnt==0){
-            sb.append(cnn);
-        }else if(cnn!=0){
-            sb.append(" + ").append(cnn);
-        }
 
-
-        return sb.toString();
+        return (xCnt != 0 ? xCnt > 1 ? xCnt + "x" : "x" : "") + 
+                (num != 0 ? (xCnt != 0 ? " + " : "") + num : xCnt == 0 ? "0" : "");
     }
 }
