@@ -3,8 +3,7 @@ class Solution {
         int answer = 0;
 
         while (s.length() != 0) {
-            answer++;
-
+            
             char ch = s.charAt(0);
             int sCount = 1;
             int dCount = 0;
@@ -19,6 +18,7 @@ class Solution {
             }
 
             s = s.substring(sCount + dCount);
+            answer++;
         }
 
         return answer;
