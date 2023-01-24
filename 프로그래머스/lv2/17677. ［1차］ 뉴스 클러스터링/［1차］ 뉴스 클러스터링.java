@@ -2,62 +2,59 @@ import java.util.*;
 
 class Solution {
     public int solution(String str1, String str2) {
-        str1 = str1.toUpperCase(); // 모두 대문자로 
-		str2 = str2.toUpperCase();
-		
-		ArrayList<String> list1 = new ArrayList<>();
-		ArrayList<String> list2 = new ArrayList<>();
+        str1 = str1.toUpperCase();
+        str2 = str2.toUpperCase();
 
-		ArrayList<String> union = new ArrayList<>();
-		ArrayList<String> intersection = new ArrayList<>();
+        ArrayList<String> list1 = new ArrayList<>();
+        ArrayList<String> list2 = new ArrayList<>();
+        ArrayList<String> sameList = new ArrayList<>();
+        ArrayList<String> sumList = new ArrayList<>();
 
-		// str1 다중 집합 만들기 
-		for(int i = 0; i < str1.length()-1; i++) {
-			char a = str1.charAt(i);
-			char b = str1.charAt(i+1);
+        // 두개씩 잘라서 집합 만들기
+        for (int i = 0; i < str1.length() - 1; i++) {
+            char a = str1.charAt(i);
+            char b = str1.charAt(i + 1);
 
-			// 문자만 가진 경우만 추가 
-			if(Character.isLetter(a) && Character.isLetter(b)) {
-				String str = Character.toString(a) + Character.toString(b);
-				list1.add(str);
-			}
-		}
-
-		// str2 다중 집합 만들기 
-		for(int i = 0; i < str2.length()-1; i++) {
-			char a = str2.charAt(i);
-			char b = str2.charAt(i+1);
-
-			// 문자만 가진 경우만 추가 
-			if(Character.isLetter(a) && Character.isLetter(b)) {
-				list2.add(Character.toString(a) + Character.toString(b));
-			}
+            if (Character.isLetter(a) && Character.isLetter(b)) {
+                String str = Character.toString(a) + Character.toString(b);
+                list1.add(str);
+            }
         }
 
-		// 중복 원소 처리를 위해 두 집합 정렬
-		Collections.sort(list1);
-		Collections.sort(list2);
-		
-		// 교집합 구하기 
-		for(String s : list1) {
-			if(list2.remove(s)) { // 집합1에 집합2가 포함된다면 삭제후, 교집합에 추가 
-				intersection.add(s);
-			}
-			union.add(s);
-		}
-		
-		// 합집합 구하기 
-		for(String s : list2) { // 교집합에서 제외된 것 뺀 나머지 합집합에 추가 
-			union.add(s);
-		}
+        for (int i = 0; i < str2.length() - 1; i++) {
+            char a = str2.charAt(i);
+            char b = str2.charAt(i + 1);
 
-   		double jakard = 0;
-	
-		if(union.size() == 0)
-			jakard = 1;	// 공집합일 경우 1
-		else
-			jakard = (double) intersection.size() / (double) union.size();
+            if (Character.isLetter(a) && Character.isLetter(b)) {
+                String str = Character.toString(a) + Character.toString(b);
+                list2.add(str);
+            }
+        }
+        // 중복 처리 위해 둘다 정렬
+        Collections.sort(list1);
+        Collections.sort(list2);
 
-		return (int) (jakard * 65536);
+        // 교집합
+        for (String str : list1) {
+            if (list2.remove(str)) { // 집합1에 집합2가 포함된다면 삭제후, 교집합에 추가
+                sameList.add(str);
+            }
+            sumList.add(str);
+        }
+
+        // 합집합
+        for (String str : list2) {  // 교집합에서 제외된 것 뺀 나머지 합집합에 추가
+            sumList.add(str);
+        }
+
+        double jakard = 0;
+
+        if (sumList.size() == 0) {
+            jakard = 1;
+        } else {
+            jakard = (double) sameList.size() / (double) sumList.size();
+        }
+
+        return (int) (jakard * 65536);
     }
 }
