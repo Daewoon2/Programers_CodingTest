@@ -22,7 +22,7 @@ class Solution {
             }
         }
 
-        // fr, re, en, nc, ch
+        // FR, RE, EN, NC, CH
         for (int i = 0; i < str2.length() - 1; i++) {
             char a = str2.charAt(i);
             char b = str2.charAt(i + 1);
