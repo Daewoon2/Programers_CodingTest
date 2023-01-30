@@ -35,8 +35,7 @@ class Solution {
         // 중복 처리 위해 둘다 정렬
         //list1 = AN, CE, FR, NC, RA
         //list2 = CH, EN, FR, NC, RE
-        Collections.sort(list1);
-        Collections.sort(list2);
+        
 
         // 교집합
         // samList = FR, NC
