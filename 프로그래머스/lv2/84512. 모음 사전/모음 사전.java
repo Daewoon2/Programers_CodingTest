@@ -26,7 +26,7 @@ class Solution {
     void compare(String word, String str, int count) {
         list.add(str);
 
-        if (count == 5) {
+        if (count > 4) {
             return;
         }
 
